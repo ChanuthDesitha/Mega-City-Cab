@@ -1,0 +1,205 @@
+<div class="container">
+  <div class="heading">
+    <p>New Reservation</p>
+  </div>
+
+  <form action="">
+    <div class="form-container">
+      <div class="customer-form">
+        <div class="label">Customer Mobile Number</div>
+        <div class="load-customer">
+          <input
+            type="text"
+            #customerPhone
+            (input)="onCusPhoneChange(customerPhone.value)"
+          />
+        </div>
+
+        <div *ngIf="customerID !== ''">
+          <div class="name">
+            <div class="first-name">
+              <div class="label">First Name</div>
+              <div class="details">{{ fisrtName }}</div>
+            </div>
+
+            <div class="last-name">
+              <div class="label">Last Name</div>
+              <div class="details">{{ lastName }}</div>
+            </div>
+          </div>
+
+          <div class="address">
+            <div class="label">Address</div>
+            <div class="details">{{ address }}</div>
+          </div>
+
+          <div class="email-nic">
+            <div class="email">
+              <div class="label">Email</div>
+              <div class="details">{{ email }}</div>
+            </div>
+
+            <div class="nic">
+              <div class="label">NIC</div>
+              <div class="details">{{ nic }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-error">
+          <p *ngIf="customerID === ''">{{ customerErrorMessage }}</p>
+        </div>
+
+        <div class="locations">
+          <div class="pick">
+            <div class="label">Pick up Location</div>
+            <input type="text" />
+          </div>
+
+          <div class="drop">
+            <div class="label">Drop off Location</div>
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="schedule-btn">
+          <button
+            type="button"
+            (click)="setSchedule($event)"
+            [ngClass]="{ 'bg-[#FFB800]': schedule, 'bg-white': !schedule }"
+          >
+            Schedule for Later
+          </button>
+        </div>
+
+        <div class="schedule-details">
+          <div class="date">
+            <div class="label">Date</div>
+            <input type="date" [readOnly]="!schedule" [value]="currentDate" />
+          </div>
+
+          <div class="time">
+            <div class="label">Time</div>
+            <input type="time" [readOnly]="!schedule" [value]="currentTime" />
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-form">
+        <div class="label">Vehicle Type</div>
+        <div class="vehicle-type">
+          <button
+            class="vehicle-btn"
+            (click)="setVehicleType('tuk', $event)"
+            [ngClass]="{
+              'border-[#FFB800]': vehicleType === 'tuk',
+              'border-gray-300': vehicleType !== 'tuk'
+            }"
+          >
+            <div class="vehicle-container">
+              <img src="/tuk.png" alt="tuk icon" />
+              <div class="passenger">
+                <img src="/group.png" alt="passenger icon" />
+                <p>3</p>
+              </div>
+              <p class="vehicle-name">Tuk</p>
+            </div>
+          </button>
+
+          <button
+            class="vehicle-btn"
+            (click)="setVehicleType('car', $event)"
+            [ngClass]="{
+              'border-[#FFB800]': vehicleType === 'car',
+              'border-gray-300': vehicleType !== 'car'
+            }"
+          >
+            <div class="vehicle-container">
+              <img src="/sedan.png" alt="tuk icon" />
+              <div class="passenger">
+                <img src="/group.png" alt="passenger icon" />
+                <p>4</p>
+              </div>
+              <p class="vehicle-name">Car</p>
+            </div>
+          </button>
+          <button
+            class="vehicle-btn"
+            (click)="setVehicleType('van', $event)"
+            [ngClass]="{
+              'border-[#FFB800]': vehicleType === 'van',
+              'border-gray-300': vehicleType !== 'van'
+            }"
+          >
+            <div class="vehicle-container">
+              <img src="/van.png" alt="tuk icon" />
+              <div class="passenger">
+                <img src="/group.png" alt="passenger icon" />
+                <p>8</p>
+              </div>
+              <p class="vehicle-name">Van</p>
+            </div>
+          </button>
+        </div>
+
+        <div class="label">Driver & Vehicle Details</div>
+
+        <div *ngIf="registrationNumber !== '' && driverEmail !== ''">
+          <div class="driver-details">
+            <div class="driver-name">
+              <div class="label">Driver Name</div>
+              <div class="details">
+                {{ driverFirstName + " " + driverLastName }}
+              </div>
+            </div>
+
+            <div class="driver-phone">
+              <div class="label">Mobile Number</div>
+              <div class="details">{{ driverPhone }}</div>
+            </div>
+          </div>
+
+          <div class="vehicle-details">
+            <div class="regNumber">
+              <div class="label">Vehicle Number</div>
+              <div class="details">{{ registrationNumber }}</div>
+            </div>
+            <div class="brand">
+              <div class="label">Vehicle Brand</div>
+              <div class="details">{{ brand }}</div>
+            </div>
+          </div>
+
+          <div class="vehicle-license">
+            <div class="license-exp-date">
+              <div class="label">License Expiry Date</div>
+              <div class="details">{{ licenseExpDate }}</div>
+            </div>
+            <div class="insurance-exp-date">
+              <div class="label">Insurance Expiry Date</div>
+              <div class="details">{{ insuranceExpDate }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-error">
+          <p *ngIf="registrationNumber === '' && driverEmail === ''">
+            {{ vehicleErrorMessage }}
+          </p>
+        </div>
+
+        <div class="proceed-btn">
+          <button type="button" (click)="setIsPopupVisible()">Proceed</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="isPopupVisible" class="popup-overlay">
+    <div class="popup-container">
+      <h2>Popup Title</h2>
+      <p>This is a popup window.</p>
+      <!-- <button (click)="closePopup()">Close</button> -->
+    </div>
+  </div>
+</div>

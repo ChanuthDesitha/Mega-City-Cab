@@ -1,0 +1,11 @@
+<div class="dashboard-container">
+  <app-dashboard-side-panel
+    [activeTab]="activeTab"
+    (tabChange)="setActive($event)"
+  ></app-dashboard-side-panel>
+  
+  <app-dashboard-action-panel
+    [activeTab]="activeTab"
+    (tabChange)="setActive($event)"
+  ></app-dashboard-action-panel>
+</div>

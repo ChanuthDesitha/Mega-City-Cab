@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="heading">
+    <p>Manage Reservations &gt; Reservation History</p>
+  </div>
+
+  <div class="data-container">
+    <div class="customer-phone">
+      <div class="flex-1"></div>
+      <div class="label">Search</div>
+
+      <div class="load-customer">
+        <input
+          type="text"
+          placeholder="07X-XXXXXXX"
+          #customerPhone
+          (input)="onCusPhoneChange(customerPhone.value)"
+        />
+      </div>
+
+      <div class="customer-error">
+        <!-- <p *ngIf="customerID === ''">{{ customerErrorMessage }}</p> -->
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="reservation-table">
+        <thead class="table-heading">
+          <tr class="table-row">
+            <th>Reservation ID</th>
+            <th>Customer Name</th>
+            <th>Customer Phone</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <!-- <tr *ngFor="let reservation of reservations" class="border-b">
+                    <td class="py-3 px-6">{{ reservation.id }}</td>
+                    <td class="py-3 px-6">{{ reservation.customerName }}</td>
+                    <td class="py-3 px-6">{{ reservation.date }}</td>
+                    <td class="py-3 px-6">{{ reservation.time }}</td>
+                  </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

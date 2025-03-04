@@ -1,0 +1,27 @@
+.side-panel-container {
+    @apply flex flex-col h-full w-[300px] p-[10px] mr-[10px] rounded-lg border border-[#FFB800];
+}
+
+.logo {
+    @apply mt-4;
+}
+
+.greeting {
+    @apply font-nunito text-2xl mt-4 font-semibold;
+}
+
+.upper-btn-container {
+    @apply flex-1;
+}
+
+.btn {
+    @apply flex items-center font-nunito font-semibold text-[20px] rounded-lg w-[280px] h-[50px] cursor-pointer transition-colors hover:bg-[#FFB8008C] my-5;
+
+    img {
+        @apply h-[25px] m-3;
+    }
+}
+
+.lower-btn-container {
+    @apply flex-none;
+}

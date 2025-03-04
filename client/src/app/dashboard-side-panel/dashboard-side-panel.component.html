@@ -1,0 +1,37 @@
+<div class="side-panel-container">
+  <div class="logo">
+    <img src="/logo.png" alt="logo" />
+  </div>
+
+  <div class="greeting">
+    <p>{{ greeting + ", " + firstName + "!" }}</p>
+  </div>
+
+  <div class="upper-btn-container">
+    <app-tab-button
+      *ngFor="let button of tabButtons"
+      [activeTab]="activeTab"
+      [tabName]="button.tabName"
+      [iconPath]="button.iconPath"
+      (tabChange)="setActive($event)"
+    ></app-tab-button>
+  </div>
+  <div class="lower-btn-container">
+    <button
+      class="btn"
+      (click)="setActive('profile')"
+      [ngClass]="{
+        'bg-[#FFB8008C]': activeTab === 'profile',
+        'bg-white': activeTab !== 'profile'
+      }"
+    >
+      <img src="/user.png" alt="profile icon" />
+      <span>Profile</span>
+    </button>
+
+    <button class="btn" (click)="logOut()">
+      <img src="/logout.png" alt="logout icon" />
+      <span>Log Out</span>
+    </button>
+  </div>
+</div>

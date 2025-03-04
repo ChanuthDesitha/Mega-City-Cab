@@ -1,0 +1,11 @@
+<button
+  class="btn"
+  (click)="setActive()"
+  [ngClass]="{
+    'bg-[#FFB8008C]': activeTab === tabName,
+    'bg-white': activeTab !== tabName
+  }"
+>
+  <img [src]="iconPath" alt="add icon" />
+  <span>{{ tabName | titlecase }}</span>
+</button>

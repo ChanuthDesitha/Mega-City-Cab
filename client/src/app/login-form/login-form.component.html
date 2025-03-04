@@ -1,0 +1,28 @@
+<div class="login-left">
+  <div class="login-container">
+    <div class="logo">
+      <img src="/logo.png" alt="logo" />
+    </div>
+    <div class="heading">
+      <p>Welcome Back!</p>
+    </div>
+    <div class="form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+          class="input-field"
+        />
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          class="input-field"
+        />
+        <p *ngIf="errormessage" class="error-message">{{errormessage}}</p>
+        <button type="submit" class="signin-btn">SIGN IN</button>
+      </form>
+    </div>
+  </div>
+</div>

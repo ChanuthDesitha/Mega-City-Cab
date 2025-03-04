@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="heading">
+    <p>Profile</p>
+  </div>
+
+  <div class="user-data-container">
+    <div class="hero">
+      <div class="user-image">
+        <img src="/user.png" alt="user" />
+      </div>
+
+      <div class="name-email">
+        <p class="name">{{ firstName + " " + lastName }}</p>
+        <p class="email">{{ email }}</p>
+      </div>
+
+      <div class="edit-button">
+        <button
+          [ngClass]="{ 'bg-[#FFB800]': isEditing, 'bg-white': !isEditing }"
+          (click)="setIsEditing()"
+        >
+          Edit
+        </button>
+      </div>
+    </div>
+
+    <form action="">
+      <div class="form-container">
+        <div class="left-container">
+          <div class="user-input">
+            <label for="first name">First Name</label>
+            <input type="text" [readOnly]="!isEditing" [value]="firstName" />
+          </div>
+
+          <div class="user-input">
+            <label for="phone">Phone</label>
+            <input type="text" [readOnly]="!isEditing" [value]="phone" />
+          </div>
+
+          <div class="user-input">
+            <label for="username">Username</label>
+            <input type="text" readonly [value]="username" />
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="user-input">
+            <label for="Last Name">Last Name</label>
+            <input type="text" [readOnly]="!isEditing" [value]="lastName" />
+          </div>
+
+          <div class="user-input">
+            <label for="email">Email</label>
+            <input type="email" [readOnly]="!isEditing" [value]="email" />
+          </div>
+
+          <div class="user-input">
+            <label for="desgnation">Designation</label>
+            <input type="text" readonly [value]="designation" />
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isEditing" class="save-btn">
+        <button type="submit" (click)="updateUser()">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

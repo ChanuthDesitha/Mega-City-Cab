@@ -1,0 +1,57 @@
+.container {
+  @apply mt-[40px] flex flex-col;
+
+  .heading {
+    @apply text-4xl font-nunito font-bold ml-[90px];
+  }
+
+  .customer-phone {
+    @apply flex w-[1200px] mb-8 space-x-5 items-center;
+  }
+
+  .label {
+    @apply text-xl font-nunito;
+  }
+
+  .load-customer {
+    input {
+      @apply w-[300px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+    }
+  }
+
+  .customer-error {
+    @apply text-xl text-red-500 font-nunito justify-center items-center;
+  }
+
+  .data-container {
+    @apply flex flex-col mt-10 justify-center items-center;
+  }
+
+  .table-container {
+    @apply bg-white shadow-lg rounded-lg max-h-[700px] overflow-y-auto;
+  }
+
+  .reservation-table {
+    @apply w-[1200px] text-black font-nunito font-semibold px-6 py-6 border-collapse;
+  }
+
+  .table-row {
+    @apply py-3 px-6;
+  }
+
+  .table-heading {
+    @apply sticky top-0;
+    
+    th {
+      @apply py-3 px-6 text-left bg-[#e6e6e6];
+    }
+  }
+
+  .table-body {
+    @apply divide-y font-normal;
+  }
+}
+
+.table-container {
+  background: linear-gradient(135deg, #77DD66, #D7F4D2);
+}

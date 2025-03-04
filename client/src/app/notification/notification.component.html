@@ -1,0 +1,12 @@
+<div
+  *ngIf="message"
+  class="notification-container"
+  [ngClass]="{
+    'border-green-500 text-green-600': messageType === 'success',
+    'border-red-500 text-red-600': messageType === 'error'
+  }"
+>
+  <img [src]="iconPath" class="icon" />
+  <span>{{ message }}</span>
+  <button (click)="closeNotification()" class="close-btn">✖</button>
+</div>

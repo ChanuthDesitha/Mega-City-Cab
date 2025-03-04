@@ -1,0 +1,30 @@
+<div class="action-panel-container">
+  <ng-container [ngSwitch]="activeTab">
+    <app-default-tab *ngSwitchCase="''"></app-default-tab>
+
+    <app-new-reservation-tab
+      *ngSwitchCase="'new reservation'"
+    ></app-new-reservation-tab>
+
+    <app-manage-customers-tab
+      *ngSwitchCase="'manage customers'"
+      [activeTab]="activeTab"
+      (tabChange)="setActive($event)"
+    ></app-manage-customers-tab>
+
+    <app-manage-reservation-tab
+      *ngSwitchCase="'manage reservations'"
+      [activeTab]="activeTab"
+      (tabChange)="setActive($event)"
+    ></app-manage-reservation-tab>
+
+    <app-add-customer *ngSwitchCase="'add customer'"></app-add-customer>
+
+    <app-edit-customer *ngSwitchCase="'edit customer'"></app-edit-customer>
+
+    <app-re-schedule-tab *ngSwitchCase="'re-schedule reservation'"></app-re-schedule-tab>
+
+    <app-reservation-history-tab *ngSwitchCase="'reservation history'"></app-reservation-history-tab>
+    <app-profile-tab *ngSwitchCase="'profile'"></app-profile-tab>
+  </ng-container>
+</div>

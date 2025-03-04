@@ -1,0 +1,7 @@
+.container {
+    @apply flex justify-center items-center h-full overflow-hidden;
+
+    img {
+        @apply w-[1000px] h-auto;
+    }
+}

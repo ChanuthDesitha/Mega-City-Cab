@@ -1,0 +1,175 @@
+.container {
+  @apply mt-[40px] flex flex-col;
+  
+  .heading {
+    @apply text-4xl font-nunito font-bold ml-[90px];
+  }
+
+  .form-container {
+    @apply flex mt-10 space-x-[150px] justify-center;
+
+    .customer-form {
+      @apply flex flex-col w-[550px];
+    }
+
+    .label {
+      @apply text-xl font-nunito;
+    }
+
+    .load-customer {
+      @apply flex space-x-16 mt-3 mb-10;
+
+      input {
+        @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+      }
+
+      button {
+        @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
+      }
+    }
+
+    .name {
+      @apply flex space-x-16;
+
+      .first-name {
+        @apply w-[250px];
+      }
+    }
+
+    .address {
+      @apply mt-3 mb-3;
+    }
+
+    .details {
+      @apply font-nunito text-2xl font-bold;
+    }
+
+    .email-nic {
+      @apply flex space-x-16;
+
+      .email {
+        @apply w-[250px];
+      }
+    }
+
+    .customer-error {
+      @apply text-xl text-red-500 font-nunito justify-center items-center mb-10;
+    }
+
+    .locations {
+      @apply flex space-x-16;
+
+      .pick, .drop {
+        @apply w-[250px];
+
+        input {
+          @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito mt-3 mb-10;
+        }
+      }
+    }
+
+    .schedule-btn {
+      button {
+        @apply w-[250px] text-black py-3 rounded-[9px] border border-[#FFB800] hover:bg-amber-500 transition duration-300 font-nunito font-bold mb-2;
+      }
+    }
+
+    .schedule-details {
+      @apply flex space-x-16;
+
+      .date, .time {
+        @apply w-[250px];
+
+        input {
+          @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito mt-3 mb-10;
+        }
+      }
+    }
+
+    .vehicle-form {
+      @apply flex flex-col w-[550px];
+
+      .vehicle-type {
+        @apply flex space-x-5 mt-3 mb-10;
+      }
+
+      .vehicle-btn {
+        @apply border-[2px] hover:border-[#FFB800] hover:border-[2px] rounded-[9px] pt-[10px] pr-[15px] pb-[10px] pl-[15px];
+      }
+
+      .vehicle-container {
+        @apply flex flex-col justify-center items-center;
+
+        img {
+          @apply w-[100px] h-auto;
+        }
+      }
+
+      .passenger {
+        @apply flex space-x-2 justify-center items-center;
+
+        img {
+          @apply w-[30px] h-[30px];
+        }
+
+        p {
+          @apply font-nunito;
+        }
+      }
+
+      .vehicle-name {
+        @apply text-xl font-nunito mt-2;
+      }
+
+      .driver-details {
+        @apply flex space-x-16;
+
+        .driver-name, .driver-phone {
+          @apply w-[250PX] mt-3 mb-5;
+        }
+      }
+
+      .vehicle-details {
+        @apply flex space-x-16;
+
+        .regNumber, .brand {
+          @apply w-[250PX] mt-3 mb-5;
+        }
+      }
+
+      .vehicle-license {
+        @apply flex space-x-16;
+
+        .license-exp-date, .insurance-exp-date {
+          @apply w-[250PX] mt-3 mb-5;
+        }
+      }
+
+      .proceed-btn {
+        button {
+          @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
+        }
+      }
+    }
+  }
+
+  .popup-overlay {
+    @apply fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50;
+  }
+
+  .popup-container {
+    @apply bg-white p-6 rounded-lg shadow-lg w-[400px] text-center;
+
+    h2 {
+      @apply text-xl font-bold mb-4;
+    }
+
+    p {
+      @apply mb-4;
+    }
+
+    button {
+      @apply bg-[#FFB800] text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-[#e6a600];
+    }
+  }
+}
