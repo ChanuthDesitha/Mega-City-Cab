@@ -147,7 +147,12 @@
 
       .proceed-btn {
         button {
-          @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
+          @apply w-[250px] text-black py-3 rounded-[9px] font-nunito font-bold transition duration-300;
+          background: linear-gradient(135deg, #77DD66, #D7F4D2);
+
+          &:hover {
+            background: linear-gradient(135deg, #77DD66, #B8EAB0);
+          }
         }
       }
     }
@@ -169,7 +174,12 @@
     }
 
     button {
-      @apply bg-[#FFB800] text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-[#e6a600];
+      @apply w-[250px] text-black py-3 rounded-[9px] font-nunito font-bold transition duration-300;
+      background: linear-gradient(135deg, #77DD66, #D7F4D2);
+
+      &:hover {
+        background: linear-gradient(135deg, #77DD66, #B8EAB0);
+      }
     }
   }
 }
