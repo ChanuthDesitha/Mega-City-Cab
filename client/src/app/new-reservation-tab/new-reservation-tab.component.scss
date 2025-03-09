@@ -1,185 +1,350 @@
 .container {
-  @apply mt-[40px] flex flex-col;
-  
-  .heading {
-    @apply text-4xl font-nunito font-bold ml-[90px];
-  }
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .form-container {
-    @apply flex mt-10 space-x-[150px] justify-center;
+.container .heading {
+  font-size: 2.25rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  margin-left: 90px;
+}
 
-    .customer-form {
-      @apply flex flex-col w-[550px];
-    }
+.container .form-container {
+  display: flex;
+  margin-top: 2.5rem;
+  column-gap: 150px;
+  justify-content: center;
+}
 
-    .label {
-      @apply text-xl font-nunito;
-    }
+.container .form-container .customer-form {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+}
 
-    .load-customer {
-      @apply flex space-x-16 mt-3 mb-10;
+.container .form-container .label {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+}
 
-      input {
-        @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
-      }
+.container .form-container .load-customer {
+  display: flex;
+  column-gap: 4rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
 
-      button {
-        @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
-      }
-    }
+.container .form-container .load-customer input {
+  width: 250px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+}
 
-    .name {
-      @apply flex space-x-16;
+.container .form-container .load-customer input:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #128c7e;
+  font-family: 'Nunito', sans-serif;
+}
 
-      .first-name {
-        @apply w-[250px];
-      }
-    }
+.container .form-container .load-customer button {
+  width: 250px;
+  background-color: #128c7e;
+  color: black;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
 
-    .address {
-      @apply mt-3 mb-3;
-    }
+.container .form-container .load-customer button:hover {
+  background-color: #128c7e;
+}
 
-    .details {
-      @apply font-nunito text-2xl font-bold;
-    }
+.container .form-container .name {
+  display: flex;
+  column-gap: 4rem;
+}
 
-    .email-nic {
-      @apply flex space-x-16;
+.container .form-container .name .first-name {
+  width: 250px;
+}
 
-      .email {
-        @apply w-[250px];
-      }
-    }
+.container .form-container .address {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
 
-    .customer-error {
-      @apply text-xl text-red-500 font-nunito justify-center items-center mb-10;
-    }
+.container .form-container .details {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-    .locations {
-      @apply flex space-x-16;
+.container .form-container .email-nic {
+  display: flex;
+  column-gap: 4rem;
+}
 
-      .pick, .drop {
-        @apply w-[250px];
+.container .form-container .email-nic .email {
+  width: 250px;
+}
 
-        input {
-          @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito mt-3 mb-10;
-        }
-      }
-    }
+.container .form-container .customer-error {
+  font-size: 1.25rem;
+  color: #ef4444;
+  font-family: 'Nunito', sans-serif;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
 
-    .schedule-btn {
-      button {
-        @apply w-[250px] text-black py-3 rounded-[9px] border border-[#FFB800] hover:bg-amber-500 transition duration-300 font-nunito font-bold mb-2;
-      }
-    }
+.container .form-container .locations {
+  display: flex;
+  column-gap: 4rem;
+}
 
-    .schedule-details {
-      @apply flex space-x-16;
+.container .form-container .locations .pick,
+.container .form-container .locations .drop {
+  width: 250px;
+}
 
-      .date, .time {
-        @apply w-[250px];
+.container .form-container .locations .pick input,
+.container .form-container .locations .drop input {
+  width: 250px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
 
-        input {
-          @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito mt-3 mb-10;
-        }
-      }
-    }
+.container .form-container .locations .pick input:focus,
+.container .form-container .locations .drop input:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #128c7e;
+}
 
-    .vehicle-form {
-      @apply flex flex-col w-[550px];
+.container .form-container .schedule-btn button {
+  width: 250px;
+  color: black;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9px;
+  border: 1px solid #128c7e;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  margin-bottom: 0.5rem;
+}
 
-      .vehicle-type {
-        @apply flex space-x-5 mt-3 mb-10;
-      }
+.container .form-container .schedule-btn button:hover {
+  background-color: #128c7e;
+}
 
-      .vehicle-btn {
-        @apply border-[2px] hover:border-[#FFB800] hover:border-[2px] rounded-[9px] pt-[10px] pr-[15px] pb-[10px] pl-[15px];
-      }
+.container .form-container .schedule-details {
+  display: flex;
+  column-gap: 4rem;
+}
 
-      .vehicle-container {
-        @apply flex flex-col justify-center items-center;
+.container .form-container .schedule-details .date,
+.container .form-container .schedule-details .time {
+  width: 250px;
+}
 
-        img {
-          @apply w-[100px] h-auto;
-        }
-      }
+.container .form-container .schedule-details .date input,
+.container .form-container .schedule-details .time input {
+  width: 250px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
 
-      .passenger {
-        @apply flex space-x-2 justify-center items-center;
+.container .form-container .schedule-details .date input:focus,
+.container .form-container .schedule-details .time input:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #128c7e;
+}
 
-        img {
-          @apply w-[30px] h-[30px];
-        }
+.container .form-container .vehicle-form {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+}
 
-        p {
-          @apply font-nunito;
-        }
-      }
+.container .form-container .vehicle-form .vehicle-type {
+  display: flex;
+  column-gap: 1.25rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
 
-      .vehicle-name {
-        @apply text-xl font-nunito mt-2;
-      }
+.container .form-container .vehicle-form .vehicle-btn {
+  border: 2px solid;
+  border-radius: 9px;
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
 
-      .driver-details {
-        @apply flex space-x-16;
+.container .form-container .vehicle-form .vehicle-btn:hover {
+  border: 2px solid #128c7e;
+}
 
-        .driver-name, .driver-phone {
-          @apply w-[250PX] mt-3 mb-5;
-        }
-      }
+.container .form-container .vehicle-form .vehicle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-      .vehicle-details {
-        @apply flex space-x-16;
+.container .form-container .vehicle-form .vehicle-container img {
+  width: 100px;
+  height: auto;
+}
 
-        .regNumber, .brand {
-          @apply w-[250PX] mt-3 mb-5;
-        }
-      }
+.container .form-container .vehicle-form .passenger {
+  display: flex;
+  column-gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
 
-      .vehicle-license {
-        @apply flex space-x-16;
+.container .form-container .vehicle-form .passenger img {
+  width: 30px;
+  height: 30px;
+}
 
-        .license-exp-date, .insurance-exp-date {
-          @apply w-[250PX] mt-3 mb-5;
-        }
-      }
+.container .form-container .vehicle-form .passenger p {
+  font-family: 'Nunito', sans-serif;
+}
 
-      .proceed-btn {
-        button {
-          @apply w-[250px] text-black py-3 rounded-[9px] font-nunito font-bold transition duration-300;
-          background: linear-gradient(135deg, #77DD66, #D7F4D2);
+.container .form-container .vehicle-form .vehicle-name {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+  margin-top: 0.5rem;
+}
 
-          &:hover {
-            background: linear-gradient(135deg, #77DD66, #B8EAB0);
-          }
-        }
-      }
-    }
-  }
+.container .form-container .vehicle-form .driver-details {
+  display: flex;
+  column-gap: 4rem;
+}
 
-  .popup-overlay {
-    @apply fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50;
-  }
+.container .form-container .vehicle-form .driver-details .driver-name,
+.container .form-container .vehicle-form .driver-details .driver-phone {
+  width: 250px;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
 
-  .popup-container {
-    @apply bg-white p-6 rounded-lg shadow-lg w-[400px] text-center;
+.container .form-container .vehicle-form .vehicle-details {
+  display: flex;
+  column-gap: 4rem;
+}
 
-    h2 {
-      @apply text-xl font-bold mb-4;
-    }
+.container .form-container .vehicle-form .vehicle-details .regNumber,
+.container .form-container .vehicle-form .vehicle-details .brand {
+  width: 250px;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
 
-    p {
-      @apply mb-4;
-    }
+.container .form-container .vehicle-form .vehicle-license {
+  display: flex;
+  column-gap: 4rem;
+}
 
-    button {
-      @apply w-[250px] text-black py-3 rounded-[9px] font-nunito font-bold transition duration-300;
-      background: linear-gradient(135deg, #77DD66, #D7F4D2);
+.container .form-container .vehicle-form .vehicle-license .license-exp-date,
+.container .form-container .vehicle-form .vehicle-license .insurance-exp-date {
+  width: 250px;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
 
-      &:hover {
-        background: linear-gradient(135deg, #77DD66, #B8EAB0);
-      }
-    }
-  }
+.container .form-container .vehicle-form .proceed-btn button {
+  width: 250px;
+  color: black;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  background: linear-gradient(135deg, #77DD66, #D7F4D2);
+}
+
+.container .form-container .vehicle-form .proceed-btn button:hover {
+  background: linear-gradient(135deg, #77DD66, #B8EAB0);
+}
+
+.container .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container .popup-container {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 400px;
+  text-align: center;
+}
+
+.container .popup-container h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.container .popup-container p {
+  margin-bottom: 1rem;
+}
+
+.container .popup-container button {
+  width: 250px;
+  color: black;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  background: linear-gradient(135deg, #77DD66, #D7F4D2);
+}
+
+.container .popup-container button:hover {
+  background: linear-gradient(135deg, #77DD66, #B8EAB0);
 }

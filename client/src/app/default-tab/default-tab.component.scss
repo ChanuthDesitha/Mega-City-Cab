@@ -1,7 +1,14 @@
 .container {
-    @apply flex justify-center items-center h-full overflow-hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
 
-    img {
-        @apply w-[1000px] h-auto;
-    }
+.container img {
+  width: 2000px;
+  height: calc(100vh - 150px);
+  -webkit-mask-image: linear-gradient(to top, rgba(1.5, 1.5, 1.5, 1.5), transparent);
 }

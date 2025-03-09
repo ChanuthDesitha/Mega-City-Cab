@@ -20,17 +20,20 @@ public class UserServlet extends HttpServlet {
     Map<String, String> requestBody;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         doGet(request, response);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
 
         try {
             if (pathInfo == null || pathInfo.equals("/")) {
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid request");
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST,
+                        "Invalid request");
                 return;
             }
 
@@ -42,15 +45,18 @@ public class UserServlet extends HttpServlet {
                     getUser(request, response);
                     break;
                 default:
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Endpoint not found");
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND,
+                            "Not found");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "Internal Server Error");
         }
     }
 
-    protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void register(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         requestBody = JsonUtils.parseJsonRequest(request);
 
         String firstName = requestBody.get("firstName");

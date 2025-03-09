@@ -1,27 +1,59 @@
 .side-panel-container {
-    @apply flex flex-col h-full w-[300px] p-[10px] mr-[10px] rounded-lg border border-[#FFB800];
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 0.5rem;
+    border: 1px solid #128c7e;
+  }
+  
+  .logo {
+    margin-top: 1rem;
+    width: 225px;
+    height: 150px;
+  }
+  
+  .upper-btn-container {
+    display: flex;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 10px;
 }
 
-.logo {
-    @apply mt-4;
+.action-btn {
+    background-color: lightgreen;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.greeting-container {
+    text-align: right;
 }
 
 .greeting {
-    @apply font-nunito text-2xl mt-4 font-semibold;
-}
-
-.upper-btn-container {
-    @apply flex-1;
-}
-
-.btn {
-    @apply flex items-center font-nunito font-semibold text-[20px] rounded-lg w-[280px] h-[50px] cursor-pointer transition-colors hover:bg-[#FFB8008C] my-5;
-
-    img {
-        @apply h-[25px] m-3;
-    }
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .lower-btn-container {
-    @apply flex-none;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn img {
+    height: 25px;
+    margin: 0.75rem;
 }

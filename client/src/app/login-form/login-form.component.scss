@@ -1,41 +1,83 @@
 body {
-  @apply font-nunito;
+  font-family: 'Nunito', sans-serif;
 }
 
 .login-left {
-  @apply w-[530px] ml-[50px];
+  width: 530px;
+  margin-left: 50px;
 }
 
 .login-container {
-  @apply flex flex-col justify-center items-center h-[calc(100vh-20px)] overflow-hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 20px);
+  overflow: hidden;
 }
 
 .logo {
-  @apply w-[350px] h-auto mb-10;
+  width: 350px;
+  height: auto;
+  margin-bottom: 2.5rem;
 }
 
-.heading {
-  p {
-    @apply font-nunito text-3xl mb-7;
-  }
+.heading p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.875rem;
+  margin-bottom: 1.75rem;
 }
 
 .form {
-  @apply w-full;
+  width: 100%;
+}
 
-  form {
-    @apply space-y-5 flex flex-col justify-center items-center;
-  }
+.form form {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-field {
-  @apply w-[350px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+  width: 350px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  margin: 10px;
+}
+
+.input-field:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #128c7e;
 }
 
 .error-message {
-  @apply text-red-500 text-sm;
+  color: #ef4444;
+  font-size: 0.875rem;
 }
 
 .signin-btn {
-  @apply w-[350px] bg-gradient-to-r from-[#77DD66] to-[#D7F4D2] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito uppercase font-bold;
+  width: 350px;
+  background-image: linear-gradient(to right, #77DD66, #D7F4D2);
+  color: black;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition-duration: 300ms;
+  margin: 10px;
+}
+
+.signin-btn:hover {
+  background-color: #f59e0b;
 }

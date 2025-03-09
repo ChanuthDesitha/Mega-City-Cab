@@ -1,91 +1,156 @@
 .container {
-  @apply mt-[40px] flex flex-col;
-
-  // Optional gradient border if you want to add some highlight
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
   border: 3px solid transparent;
   background-clip: padding-box;
   position: relative;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    // background: linear-gradient(135deg, #77DD66, #D7F4D2);
-    border-radius: inherit;
-  }
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+}
 
-  .heading {
-    @apply text-4xl font-nunito font-bold ml-[90px];
+.container .heading {
+  font-size: 2.25rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  margin-left: 90px;
+}
 
-    p {
-      @apply font-semibold text-gray-700;
-    }
-  }
+.container .heading p {
+  font-weight: 600;
+  color: #4b5563;
+}
 
-  .user-data-container {
-    @apply flex flex-col mt-10 justify-center items-center;
+.container .user-data-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  justify-content: center;
+  align-items: center;
+}
 
-    .customer-phone {
-      @apply flex w-[1200px] mb-8 space-x-5 items-center;
+.container .user-data-container .customer-phone {
+  display: flex;
+  width: 1200px;
+  margin-bottom: 2rem;
+  column-gap: 1.25rem;
+  align-items: center;
+}
 
-      .label {
-        @apply text-xl font-nunito;
-      }
+.container .user-data-container .customer-phone .label {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+}
 
-      .load-customer {
-        input {
-          @apply w-[300px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
-        }
-      }
+.container .user-data-container .customer-phone .load-customer input {
+  width: 300px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+}
 
-      .customer-error {
-        @apply text-xl text-red-500 font-nunito flex justify-center items-center;
-      }
-    }
+.container .user-data-container .customer-phone .load-customer input:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #128c7e;
+}
 
-    form {
-      .form-container {
-        @apply flex w-[1200px] space-x-[150px] justify-center;
+.container .user-data-container .customer-phone .customer-error {
+  font-size: 1.25rem;
+  color: #ef4444;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .left-container,
-        .right-container {
-          @apply flex flex-col w-[550px];
+.container .user-data-container form .form-container {
+  display: flex;
+  width: 1200px;
+  column-gap: 150px;
+  justify-content: center;
+}
 
-          .user-input {
-            @apply flex flex-col mb-6;
+.container .user-data-container form .form-container .left-container,
+.container .user-data-container form .form-container .right-container {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+}
 
-            label {
-              @apply text-xl font-nunito mb-1 text-gray-700;
-            }
+.container .user-data-container form .form-container .left-container .user-input,
+.container .user-data-container form .form-container .right-container .user-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
 
-            input {
-              @apply w-full px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
-            }
-          }
-        }
-      }
+.container .user-data-container form .form-container .left-container .user-input label,
+.container .user-data-container form .form-container .right-container .user-input label {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 0.25rem;
+  color: #4b5563;
+}
 
-      .save-btn {
-        @apply flex justify-center mt-5;
+.container .user-data-container form .form-container .left-container .user-input input,
+.container .user-data-container form .form-container .right-container .user-input input {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+}
 
-        button {
-          @apply w-[250px] text-black py-3 rounded-[9px] font-nunito font-bold transition duration-300;
-          background: linear-gradient(135deg, #77DD66, #D7F4D2);
+.container .user-data-container form .form-container .left-container .user-input input:focus,
+.container .user-data-container form .form-container .right-container .user-input input:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #128c7e;
+}
 
-          &:hover {
-            background: linear-gradient(135deg, #77DD66, #B8EAB0);
-          }
-        }
-      }
-    }
-  }
+.container .user-data-container form .save-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
 
-  app-notification {
-    @apply mt-5 w-[1200px];
+.container .user-data-container form .save-btn button {
+  width: 250px;
+  color: black;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  transition-property: all;
+  transition-duration: 300ms;
+  background: linear-gradient(135deg, #77DD66, #D7F4D2);
+}
 
-    [message] {
-      @apply text-xl font-nunito;
-    }
-  }
+.container .user-data-container form .save-btn button:hover {
+  background: linear-gradient(135deg, #77DD66, #B8EAB0);
+}
+
+.container app-notification {
+  margin-top: 1.25rem;
+  width: 1200px;
+}
+
+.container app-notification [message] {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
 }

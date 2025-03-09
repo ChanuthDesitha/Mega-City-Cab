@@ -1,3 +1,10 @@
 .action-panel-container {
-    @apply flex flex-col h-full w-[calc(100vw-330px)] p-[10px] rounded-lg border border-[#FFB800] flex-1;
-}
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 130px);
+    width: 100%;
+    padding: 10px;
+    border-radius: 0.5rem;
+    border: 1px solid #128c7e;
+    margin-top: 10px;
+  }

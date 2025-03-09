@@ -1,55 +1,107 @@
 .container {
-  @apply mt-[40px] flex flex-col;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .heading {
-    @apply text-4xl font-nunito font-bold ml-[90px];
-  }
+.container .heading {
+  font-size: 2.25rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  margin-left: 90px;
+}
 
-  .customer-phone {
-    @apply flex w-[1200px] mb-8 space-x-5 items-center;
-  }
+.container .customer-phone {
+  display: flex;
+  width: 1200px;
+  margin-bottom: 2rem;
+  column-gap: 1.25rem;
+  align-items: center;
+}
 
-  .label {
-    @apply text-xl font-nunito;
-  }
+.container .label {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+}
 
-  .load-customer {
-    input {
-      @apply w-[300px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
-    }
-  }
+.container .load-customer input {
+  width: 300px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+}
 
-  .customer-error {
-    @apply text-xl text-red-500 font-nunito justify-center items-center;
-  }
+.container .load-customer input:focus {
+  outline: none;
+  ring-width: 1px;
+  ring-color: #FFB800;
+}
 
-  .data-container {
-    @apply flex flex-col mt-10 justify-center items-center;
-  }
+.container .customer-error {
+  font-size: 1.25rem;
+  color: #ef4444;
+  font-family: 'Nunito', sans-serif;
+  justify-content: center;
+  align-items: center;
+}
 
-  .table-container {
-    @apply bg-white shadow-lg rounded-lg max-h-[700px] overflow-y-auto;
-  }
+.container .data-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  justify-content: center;
+  align-items: center;
+}
 
-  .reservation-table {
-    @apply w-[1200px] text-black font-nunito font-semibold px-6 py-6 border-collapse;
-  }
+.container .table-container {
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  max-height: 700px;
+  overflow-y: auto;
+}
 
-  .table-row {
-    @apply py-3 px-6;
-  }
+.container .reservation-table {
+  width: 1200px;
+  color: black;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-collapse: collapse;
+}
 
-  .table-heading {
-    @apply sticky top-0;
-    
-    th {
-      @apply py-3 px-6 text-left bg-[#e6e6e6];
-    }
-  }
+.container .table-row {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 
-  .table-body {
-    @apply divide-y font-normal;
-  }
+.container .table-heading {
+  position: sticky;
+  top: 0;
+}
+
+.container .table-heading th {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: left;
+  background-color: #e6e6e6;
+}
+
+.container .table-body {
+  border-top-width: 1px;
+  border-top-style: solid;
+  font-weight: normal;
 }
 
 .table-container {

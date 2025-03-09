@@ -1,7 +1,12 @@
 .container {
-  @apply mt-[40px] flex flex-col;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .heading {
-  @apply text-4xl font-nunito font-bold ml-[90px];
+  font-size: 2.25rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  margin-left: 90px;
 }

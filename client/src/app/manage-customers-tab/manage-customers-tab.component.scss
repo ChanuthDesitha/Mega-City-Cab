@@ -1,28 +1,58 @@
 .container {
-    @apply mt-[40px] flex flex-col;
-  }
-  
-  .heading {
-    @apply text-4xl font-nunito font-bold ml-[90px];
-  }
-  
-  .btn-container {
-    @apply flex flex-col mt-10 justify-center items-center space-y-5;
-  }
-  
-  .add-customer-btn {
-    @apply w-[1200px] bg-gradient-to-r from-[#77DD66] to-[#D7F4D2] hover:bg-amber-500 shadow-lg transition duration-300 text-black font-semibold px-6 py-6 rounded-[15px];
-  }
-  
-  .btn {
-    @apply flex justify-between items-center w-full;
-  }
-  
-  .title {
-    @apply text-xl font-nunito flex-1 text-left;
-  }
-  
-  .icon {
-    @apply w-[20px] h-auto;
-  }
-  
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  margin-left: 90px;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.25rem;
+}
+
+.add-customer-btn {
+  width: 1200px;
+  background-image: linear-gradient(to right, #77DD66, #D7F4D2);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition-duration: 300ms;
+  color: black;
+  font-weight: 600;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 15px;
+}
+
+.add-customer-btn:hover {
+  background-color: #128c7e;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+  flex: 1 1 0%;
+  text-align: left;
+}
+
+.icon {
+  width: 20px;
+  height: auto;
+}
