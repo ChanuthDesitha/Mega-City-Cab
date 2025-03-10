@@ -19,6 +19,9 @@
   <div class="greeting-container">
         <p class="greeting">{{ greeting + ", " + firstName + "!" }}</p>
         <div class="lower-btn-container">
+            <button class="btn" (click)="setActive('help')">
+                <img src="/help.png" alt="help icon" />
+            </button>
             <button class="btn" (click)="setActive('profile')">
                 <img src="/user.png" alt="profile icon" />
             </button>

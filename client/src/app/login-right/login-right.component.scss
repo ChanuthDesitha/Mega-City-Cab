@@ -1,14 +1,71 @@
+/* Simplified right panel with clean design */
 .login-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  position: relative;
+}
+
+/* Subtle gradient background */
+.login-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1) 0%, 
+    rgba(240, 240, 240, 1) 100%);
+  z-index: 0;
+}
+
+/* Clean image styling */
+.login-right img {
+  object-fit: cover;
+  width: 85%;
+  height: auto;
+  margin-right: 50px;
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Subtle accent border */
+.login-right::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  width: 4px;
+  background-color: #4CAF50;
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+  .login-right img {
+    margin-right: 0;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-right {
+    height: 40vh;
   }
   
-  .login-right img {
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    margin-right: 150px;
+  .login-right::after {
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
   }
+}

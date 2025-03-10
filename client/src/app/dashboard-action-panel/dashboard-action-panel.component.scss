@@ -1,10 +1,11 @@
 .action-panel-container {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 130px);
-    width: 100%;
-    padding: 10px;
-    border-radius: 0.5rem;
-    border: 1px solid #128c7e;
-    margin-top: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  border-radius: 0.5rem;
+  border: 1px solid #128c7e;
+  border-bottom: none;
+  margin-top: 10px;
+}
