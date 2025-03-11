@@ -1,156 +1,125 @@
+
 .container {
-  margin-top: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #333;
+}
+
+/* Heading styles */
+.heading {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+}
+
+.heading p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* User data container styling */
+.user-data-container {
+  background-color: #f5fbf8;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+/* Form layout */
+.form-container {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.left-container, .right-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  border: 3px solid transparent;
-  background-clip: padding-box;
-  position: relative;
+  gap: 20px;
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-}
-
-.container .heading {
-  font-size: 2.25rem;
-  font-family: 'Nunito', sans-serif;
-  font-weight: bold;
-  margin-left: 90px;
-}
-
-.container .heading p {
-  font-weight: 600;
-  color: #4b5563;
-}
-
-.container .user-data-container {
+/* Input field styling */
+.user-input {
   display: flex;
   flex-direction: column;
-  margin-top: 2.5rem;
-  justify-content: center;
-  align-items: center;
+  gap: 8px;
 }
 
-.container .user-data-container .customer-phone {
-  display: flex;
-  width: 1200px;
-  margin-bottom: 2rem;
-  column-gap: 1.25rem;
-  align-items: center;
+.user-input label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
 }
 
-.container .user-data-container .customer-phone .label {
-  font-size: 1.25rem;
-  font-family: 'Nunito', sans-serif;
+.user-input input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.container .user-data-container .customer-phone .load-customer input {
-  width: 300px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
-  font-family: 'Nunito', sans-serif;
-}
-
-.container .user-data-container .customer-phone .load-customer input:focus {
+.user-input input:focus {
   outline: none;
-  ring-width: 1px;
-  ring-color: #128c7e;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
-.container .user-data-container .customer-phone .customer-error {
-  font-size: 1.25rem;
-  color: #ef4444;
-  font-family: 'Nunito', sans-serif;
+/* Button styling */
+.save-btn {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
 
-.container .user-data-container form .form-container {
-  display: flex;
-  width: 1200px;
-  column-gap: 150px;
-  justify-content: center;
+.save-btn button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.container .user-data-container form .form-container .left-container,
-.container .user-data-container form .form-container .right-container {
-  display: flex;
-  flex-direction: column;
-  width: 550px;
+.save-btn button:hover {
+  background-color: #3e8e41;
 }
 
-.container .user-data-container form .form-container .left-container .user-input,
-.container .user-data-container form .form-container .right-container .user-input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
+.save-btn button:active {
+  background-color: #367d38;
+  transform: translateY(1px);
 }
 
-.container .user-data-container form .form-container .left-container .user-input label,
-.container .user-data-container form .form-container .right-container .user-input label {
-  font-size: 1.25rem;
-  font-family: 'Nunito', sans-serif;
-  margin-bottom: 0.25rem;
-  color: #4b5563;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+  
+  .user-data-container {
+    padding: 20px;
+  }
 }
 
-.container .user-data-container form .form-container .left-container .user-input input,
-.container .user-data-container form .form-container .right-container .user-input input {
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
-  font-family: 'Nunito', sans-serif;
+/* Optional: if you have form validation in Angular */
+input.ng-invalid.ng-touched {
+  border-color: #f44336;
 }
 
-.container .user-data-container form .form-container .left-container .user-input input:focus,
-.container .user-data-container form .form-container .right-container .user-input input:focus {
-  outline: none;
-  ring-width: 1px;
-  ring-color: #128c7e;
-}
-
-.container .user-data-container form .save-btn {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.25rem;
-}
-
-.container .user-data-container form .save-btn button {
-  width: 250px;
-  color: black;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  border-radius: 9px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: bold;
-  transition-property: all;
-  transition-duration: 300ms;
-  background: linear-gradient(135deg, #77DD66, #D7F4D2);
-}
-
-.container .user-data-container form .save-btn button:hover {
-  background: linear-gradient(135deg, #77DD66, #B8EAB0);
-}
-
-.container app-notification {
-  margin-top: 1.25rem;
-  width: 1200px;
-}
-
-.container app-notification [message] {
-  font-size: 1.25rem;
-  font-family: 'Nunito', sans-serif;
+input.ng-valid.ng-touched {
+  border-color: #4CAF50;
 }
