@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/api/manage-vehicles/*")
@@ -40,6 +41,9 @@ public class VehicleServlet extends HttpServlet {
                     break;
                 case "/get-available-vehicle":
                     getAvailableVehicle(request, response);
+                    break;
+                case "/get-all-vehicles":
+                    getAllVehicles(request, response);
                     break;
                 default:
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Endpoint not found");
@@ -106,6 +110,27 @@ public class VehicleServlet extends HttpServlet {
             jsonResponse.put("status", "error");
             jsonResponse.put("message", "Vehicle type not included!");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+
+        response.getWriter().write(objectMapper.writeValueAsString(jsonResponse));
+    }
+
+    protected void getAllVehicles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        Map<String, Object> jsonResponse = new HashMap<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        List<Vehicle> vehicles = vehicleService.getAllVehicles();
+        if (vehicles != null) {
+            jsonResponse.put("status", "success");
+            jsonResponse.put("vehicles", vehicles);
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else {
+            jsonResponse.put("status", "error");
+            jsonResponse.put("message", "No vehicles found!");
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
 
         response.getWriter().write(objectMapper.writeValueAsString(jsonResponse));

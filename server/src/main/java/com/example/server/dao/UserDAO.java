@@ -2,11 +2,16 @@ package com.example.server.dao;
 
 import com.example.server.config.MongoDBConnection;
 import com.example.server.models.User;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -37,8 +42,27 @@ public class UserDAO {
         return null;
     }
 
-    public User findLastUser(String designation) {
-        Document lastUser = userCollection.find(Filters.eq("designation", designation)).sort(Sorts.descending("userID")).first();
+    public User findByID(String id) {
+        Document userDoc = userCollection.find(eq("userID", id)).first();
+
+        if(userDoc != null) {
+            return new User(
+                    userDoc.getString("userID"),
+                    userDoc.getString("firstName"),
+                    userDoc.getString("lastName"),
+                    userDoc.getString("email"),
+                    userDoc.getString("phone"),
+                    userDoc.getString("username"),
+                    userDoc.getString("password"),
+                    userDoc.getString("designation")
+            );
+        }
+
+        return null;
+    }
+
+    public User findLastUser() {
+        Document lastUser = userCollection.find().sort(Sorts.descending("userID")).first();
 
         if(lastUser != null) {
             return new User(
@@ -69,5 +93,40 @@ public class UserDAO {
 
         userCollection.insertOne(newUser);
         return true;
+    }
+
+    public boolean updateUser(User user) {
+        Document updatedUser = new Document()
+                .append("firstName", user.getFirstName())
+                .append("lastName", user.getLastName())
+                .append("email", user.getEmail())
+                .append("phone", user.getPhone())
+                .append("username", user.getUsername())
+                .append("designation", user.getDesignation());
+
+        UpdateResult result = userCollection.updateOne(
+                Filters.eq("userID", user.getId()),
+                new Document("$set", updatedUser)
+        );
+
+        return result.getModifiedCount() > 0;
+    }
+
+    public List<User> getAllUsers(String designation) {
+        List<User> drivers = new ArrayList<>();
+
+        FindIterable<Document> driverDocs = userCollection.find(eq("designation", designation));
+        for (Document doc : driverDocs) {
+            drivers.add(new User(
+                    doc.getString("userID"),
+                    doc.getString("firstName"),
+                    doc.getString("lastName"),
+                    doc.getString("email"),
+                    doc.getString("phone"),
+                    doc.getString("username"),
+                    doc.getString("designation")
+            ));
+        }
+        return drivers;
     }
 }

@@ -82,13 +82,16 @@ public class Reservation {
         return pickLocation;
     }
     public void setPickLocation(String pickLocation) {
+
         this.pickLocation = pickLocation;
     }
 
     public String getDropLocation() {
+
         return dropLocation;
     }
     public void setDropLocation(String dropLocation) {
+
         this.dropLocation = dropLocation;
     }
 

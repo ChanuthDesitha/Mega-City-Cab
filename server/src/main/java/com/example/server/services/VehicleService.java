@@ -3,6 +3,8 @@ package com.example.server.services;
 import com.example.server.dao.VehicleDAO;
 import com.example.server.models.Vehicle;
 
+import java.util.List;
+
 public class VehicleService {
     private final VehicleDAO vehicleDAO = new VehicleDAO();
 
@@ -21,5 +23,13 @@ public class VehicleService {
 
         Vehicle vehicle = new Vehicle(registrationNumber, username, type, brand, model, year, "available", passengerCount, insuranceExpDate, licenseExpDate);
         return vehicleDAO.addVehicle(vehicle);
+    }
+
+    public List<Vehicle> getAllVehicles() {
+        if (vehicleDAO.getAllVehicles() == null) {
+            return null;
+        }
+
+        return vehicleDAO.getAllVehicles();
     }
 }

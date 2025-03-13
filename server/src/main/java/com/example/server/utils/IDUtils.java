@@ -7,8 +7,8 @@ import com.example.server.dao.UserDAO;
 public class IDUtils {
     private static final String DEFAULT_ID = "001";
 
-    public static String generateUserID(UserDAO userDAO, String designation) {
-        return generateID(userDAO.findLastUser(designation));
+    public static String generateUserID(UserDAO userDAO) {
+        return generateID(userDAO.findLastUser());
     }
 
     public static String generateCustomerID(CustomerDAO customerDAO) {

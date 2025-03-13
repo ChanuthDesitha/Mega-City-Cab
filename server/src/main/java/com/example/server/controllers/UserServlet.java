@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/api/manage-users/*")
@@ -20,20 +21,17 @@ public class UserServlet extends HttpServlet {
     Map<String, String> requestBody;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
 
         try {
             if (pathInfo == null || pathInfo.equals("/")) {
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST,
-                        "Invalid request");
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid request");
                 return;
             }
 
@@ -44,19 +42,22 @@ public class UserServlet extends HttpServlet {
                 case "/get-user":
                     getUser(request, response);
                     break;
+                case "/update":
+                    updateUser(request, response);
+                    break;
+                case "/get-all-users":
+                    getAllUsers(request, response);
+                    break;
                 default:
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND,
-                            "Not found");
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Endpoint not found");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Internal Server Error");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
         }
     }
 
-    protected void register(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
         requestBody = JsonUtils.parseJsonRequest(request);
 
         String firstName = requestBody.get("firstName");
@@ -85,7 +86,7 @@ public class UserServlet extends HttpServlet {
         JsonUtils.sendJsonResponse(response, jsonResponse);
     }
 
-    protected void getUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void getUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Map<String, String> requestBody = JsonUtils.parseJsonRequest(request);
         String username = requestBody.get("username");
 
@@ -109,6 +110,65 @@ public class UserServlet extends HttpServlet {
         } else {
             jsonResponse.put("status", "error");
             jsonResponse.put("message", "Username not included!");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+
+        response.getWriter().write(objectMapper.writeValueAsString(jsonResponse));
+    }
+
+    protected void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        requestBody = JsonUtils.parseJsonRequest(request);
+
+        String id = requestBody.get("id");
+        String firstName = requestBody.get("firstName");
+        String lastName = requestBody.get("lastName");
+        String email = requestBody.get("email");
+        String phone = requestBody.get("phone");
+        String username = requestBody.get("username");
+        String designation = requestBody.get("designation");
+
+        Map<String, String> jsonResponse = new HashMap<>();
+        if (id == null || firstName == null || lastName == null || email == null || phone == null || username == null || designation == null) {
+            jsonResponse.put("message", "All fields are required");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+            boolean success = userService.updateUser(id, firstName, lastName, email, phone, username, designation);
+            if (success) {
+                jsonResponse.put("message", designation + " updated successfully!");
+                response.setStatus(HttpServletResponse.SC_OK);
+            } else {
+                jsonResponse.put("message", designation + " update failed! User not found!");
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        JsonUtils.sendJsonResponse(response, jsonResponse);
+    }
+
+    protected void getAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Map<String, String> requestBody = JsonUtils.parseJsonRequest(request);
+        String designation = requestBody.get("designation");
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        Map<String, Object> jsonResponse = new HashMap<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        if (designation != null) {
+            List<User> drivers = userService.getAllUsers(designation);
+            if (drivers != null) {
+                jsonResponse.put("status", "success");
+                jsonResponse.put("drivers", drivers);
+                response.setStatus(HttpServletResponse.SC_OK);
+            } else {
+                jsonResponse.put("status", "error");
+                jsonResponse.put("message", "Drivers not found!");
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+        } else {
+            jsonResponse.put("status", "error");
+            jsonResponse.put("message", "Designation not included!");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 

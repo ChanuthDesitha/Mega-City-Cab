@@ -2,6 +2,7 @@ package com.example.server.dao;
 
 import com.example.server.config.MongoDBConnection;
 import com.example.server.models.Vehicle;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -71,5 +72,27 @@ public class VehicleDAO {
 
         vehicleCollection.insertOne(newVehicle);
         return true;
+    }
+
+    public List<Vehicle> getAllVehicles() {
+        List<Vehicle> vehicles = new ArrayList<>();
+
+        FindIterable<Document> vehicleDocs = vehicleCollection.find();
+        for (Document vehicleDoc : vehicleDocs) {
+            vehicles.add(new Vehicle(
+                    vehicleDoc.getString("registrationNumber"),
+                    vehicleDoc.getString("username"),
+                    vehicleDoc.getString("type"),
+                    vehicleDoc.getString("brand"),
+                    vehicleDoc.getString("model"),
+                    vehicleDoc.getString("year"),
+                    vehicleDoc.getString("status"),
+                    vehicleDoc.getString("passengerCount"),
+                    vehicleDoc.getString("insuranceExpDate"),
+                    vehicleDoc.getString("licenseExpDate")
+            ));
+        }
+
+        return vehicles;
     }
 }

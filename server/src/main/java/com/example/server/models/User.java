@@ -23,6 +23,16 @@ public class User {
         this.designation = designation;
     }
 
+    public User(String id, String firstName, String lastName, String email, String phone, String username, String designation) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.username = username;
+        this.designation = designation;
+    }
+
     public String getId() {
         return id;
     }
