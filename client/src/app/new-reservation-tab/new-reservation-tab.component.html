@@ -139,21 +139,21 @@
 
           <div class="address">
             <div class="icon">
-              <img src="/pin.png" alt="people icon" />
+              <img src="/add.png" alt="people icon" />
             </div>
             <div class="details">{{ address }}</div>
           </div>
 
           <div class="email">
             <div class="icon">
-              <img src="/email.png" alt="people icon" />
+              <img src="/add.png" alt="people icon" />
             </div>
             <div class="details">{{ email }}</div>
           </div>
 
           <div class="nic">
             <div class="icon">
-              <img src="/identity-card.png" alt="people icon" />
+              <img src="/add.png" alt="people icon" />
             </div>
             <div class="details">{{ nic }}</div>
           </div>
@@ -168,23 +168,23 @@
         <div *ngIf="distance !== 0">
           <div class="pickup">
             <div class="icon">
-              <img src="/pin.png" alt="pickup icon" />
+              <img src="/add.png" alt="pickup icon" />
             </div>
-            <div class="details w-[150px]">Origin</div>
+            <div class="details w-[150px]">Pickup</div>
             <div class="details">: {{ selectedPickupLocation }}</div>
           </div>
 
           <div class="dropoff">
             <div class="icon">
-              <img src="/flag.png" alt="drop icon" />
+              <img src="/check.png" alt="drop icon" />
             </div>
-            <div class="details w-[150px]">Destination</div>
+            <div class="details w-[150px]">Drop</div>
             <div class="details">: {{ selectedDropoffLocation }}</div>
           </div>
 
           <div class="distance">
             <div class="icon">
-              <img src="/distance.png" alt="distance icon" />
+              <img src="/check.png" alt="distance icon" />
             </div>
             <div class="details w-[150px]">Distance</div>
             <div class="details">: {{ distance }} km</div>
@@ -207,14 +207,14 @@
           <div class="lables">
             <div class="fare">
               <div class="icon">
-                <img src="/payment.png" alt="payment icon" />
+                <img src="/check.png" alt="payment icon" />
               </div>
-              <div class="details w-[150px]">Original Fare</div>
+              <div class="details w-[150px]">Price</div>
             </div>
 
             <div class="fare">
               <div class="icon">
-                <img src="/discount.png" alt="payment icon" />
+                <img src="/check.png" alt="payment icon" />
               </div>
               <div class="details w-[150px]">Discount</div>
             </div>
@@ -223,24 +223,24 @@
               <div class="icon">
                 <img src="/money.png" alt="payment icon" />
               </div>
-              <div class="details w-[150px]">Final Fare</div>
+              <div class="details w-[150px]">Total Price</div>
             </div>
           </div>
 
           <div class="prices">
             <div class="original-price">
               <div class="price-details">
-                <span class="font-normal text-xl">Rs.</span> 800.00
+                <span class="font-normal text-xl">Rs.</span> 1000.00
               </div>
             </div>
 
             <div class="discount">
-              <div class="discount-details">(10%) Rs. 50.00</div>
+              <div class="discount-details">(10%) - Rs.100.00</div>
             </div>
 
             <div class="fare">
               <div class="price-details">
-                <span class="font-normal text-xl">Rs.</span> 550.00
+                <span class="font-normal text-xl">Rs.</span> 900.00
               </div>
             </div>
           </div>
