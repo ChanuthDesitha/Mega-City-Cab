@@ -6,6 +6,7 @@
   
   <app-dashboard-action-panel
     [activeTab]="activeTab"
-    (tabChange)="setActive($event)"
+    [selectedUser]="selectedUser"
+    (tabChange)="setActive($event.tab, $event.user)"
   ></app-dashboard-action-panel>
 </div>

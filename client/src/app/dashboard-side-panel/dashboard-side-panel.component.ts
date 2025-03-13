@@ -56,9 +56,10 @@ export class DashboardSidePanelComponent {
     ];
 
     const adminButtons = [
-      {tabName: 'new reservation', iconPath: '/add.png'},
-      {tabName: 'manage customers', iconPath: '/customer.png'},
-      {tabName: 'manage reservations', iconPath: '/time-management.png'}
+      {tabName: 'manage vehicles', iconPath: '/add.png'},
+      {tabName: 'manage drivers', iconPath: '/add.png'},
+      {tabName: 'manage users', iconPath: '/people.png'},
+      {tabName: 'system settings', iconPath: '/setting.png'}
     ];
 
     const driverButtons = [
@@ -66,7 +67,6 @@ export class DashboardSidePanelComponent {
       {tabName: 'manage customers', iconPath: '/customer.png'},
       {tabName: 'manage reservations', iconPath: '/time-management.png'}
     ];
-
     this.tabButtons = this.designation === 'Employee' ? employeeButtons : this.designation === 'Admin' ? adminButtons : driverButtons;
   }
 

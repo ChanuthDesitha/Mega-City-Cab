@@ -22,6 +22,16 @@
 
     <app-edit-customer *ngSwitchCase="'edit customer'"></app-edit-customer>
 
+    <app-re-schedule-tab
+    *ngSwitchCase="'re-schedule reservation'"
+  ></app-re-schedule-tab>
+
+  <app-reservation-history-tab
+    *ngSwitchCase="'reservation history'"
+  ></app-reservation-history-tab>
+
+  <app-profile-tab *ngSwitchCase="'profile'"></app-profile-tab>
+
     <app-re-schedule-tab *ngSwitchCase="'re-schedule reservation'"></app-re-schedule-tab>
 
     <app-reservation-history-tab *ngSwitchCase="'reservation history'"></app-reservation-history-tab>
@@ -29,5 +39,39 @@
     <app-help *ngSwitchCase="'help'"></app-help>
 
     <app-profile-tab *ngSwitchCase="'profile'"></app-profile-tab>
+
+    <app-manage-vehicles
+      *ngSwitchCase="'manage vehicles'"
+      [activeTab]="activeTab"
+      (tabChange)="setActive($event)"
+    ></app-manage-vehicles>
+
+    <app-manage-drivers
+      *ngSwitchCase="'manage drivers'"
+      [activeTab]="activeTab"
+      (tabChange)="setActive($event.tab, $event.user)"
+    ></app-manage-drivers>
+
+    <app-manage-users
+      *ngSwitchCase="'manage Employee'"
+      [activeTab]="activeTab"
+      (tabChange)="setActive($event.tab, $event.user)"
+    ></app-manage-users>
+
+    <app-system-settings
+      *ngSwitchCase="'system settings'"
+    ></app-system-settings>
+
+    <app-add-vehicle *ngSwitchCase="'add vehicle'"></app-add-vehicle>
+
+    <app-add-driver *ngSwitchCase="'add driver'"></app-add-driver>
+
+    <app-add-user *ngSwitchCase="'add Employee'"></app-add-user>
+
+    <app-edit-user *ngSwitchCase="'edit user'" [user]="selectedUser"></app-edit-user>
+
+    <app-edit-driver *ngSwitchCase="'edit driver'" [driver]="selectedUser"></app-edit-driver>
+
+    <app-edit-vehicle *ngSwitchCase="'edit vehicle'"></app-edit-vehicle>
   </ng-container>
 </div>

@@ -1,0 +1,48 @@
+.container {
+    @apply mt-[40px] flex flex-col;
+  }
+  
+  .heading {
+    @apply text-4xl font-nunito font-bold ml-[90px];
+  }
+  
+  .user-data-container {
+    @apply flex flex-col mt-10 justify-center items-center;
+  }
+  
+  .form-container {
+    @apply flex mt-16 w-[1200px] space-x-[150px] justify-center;
+  }
+  
+  .left-container {
+    @apply flex flex-col w-[550px];
+  }
+  
+  .user-input {
+    @apply flex flex-col mb-6;
+  
+    label {
+      @apply text-xl font-nunito mb-1;
+    }
+  
+    input {
+      @apply w-full px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+    }
+
+    select {
+      @apply w-full px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+    }
+  }
+  
+  .right-container {
+    @apply flex flex-col w-[550px];
+  }
+  
+  .save-btn {
+    @apply flex justify-center mt-5;
+  
+    button {
+      @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
+    }
+  }
+  

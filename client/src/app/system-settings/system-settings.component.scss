@@ -1,0 +1,65 @@
+.container {
+  @apply mt-[40px] flex flex-col;
+}
+
+.heading {
+  @apply text-4xl font-nunito font-bold ml-[90px];
+}
+
+.btn-container {
+  @apply flex flex-col mt-10 justify-center items-center space-y-5;
+}
+
+.add-customer-btn {
+  @apply w-[1200px] bg-[#e6e6e6db] hover:bg-[#dcdcdcdb] shadow-lg transition duration-300 text-black font-semibold px-6 py-6 rounded-[15px];
+}
+
+.btn {
+  @apply flex justify-between items-center w-full;
+}
+
+.title {
+  @apply text-xl font-nunito flex-1 text-left;
+}
+
+.icon {
+  @apply w-[20px] h-auto;
+}
+
+.customer-phone {
+  @apply flex w-[1200px] mb-8 space-x-5 items-center;
+}
+
+.label {
+  @apply text-xl font-nunito;
+}
+
+.load-customer {
+  input {
+    @apply w-[300px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+  }
+}
+
+.customer-error {
+  @apply text-xl text-red-500 font-nunito justify-center items-center;
+}
+
+.data-container {
+  @apply flex flex-col mt-10 justify-center items-center;
+}
+
+.input-row {
+  @apply flex justify-between items-center w-[750px] py-2;
+
+  input {
+    @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
+  }
+}
+
+.save-btn {
+  @apply flex justify-center mt-5;
+
+  button {
+    @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
+  }
+}

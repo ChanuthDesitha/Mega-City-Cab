@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="heading">
+      <p>Manage Drivers</p>
+    </div>
+  
+    <div class="btn-container">
+      <button class="add-customer-btn" (click)="setActive('add driver')">
+        <div class="btn">
+          <div class="title">
+            <p>Add New Driver</p>
+          </div>
+  
+          <div class="icon">
+            <img src="/next.png" alt="next icon" />
+          </div>
+        </div>
+      </button>
+
+      <div class="data-container">
+        <div class="customer-phone">
+          <div class="flex-1"></div>
+          <div class="label">Search</div>
+    
+          <div class="load-customer">
+            <input
+              type="text"
+              placeholder="username"
+              #customerPhone            
+            />
+          </div>
+    
+          <div class="customer-error">
+            <!-- <p *ngIf="customerID === ''">{{ customerErrorMessage }}</p> -->
+          </div>
+        </div>
+    
+        <div class="table-container">
+          <table class="reservation-table">
+            <thead class="table-heading">
+              <tr class="table-row">
+                <th>Driver ID</th>
+                <th>Driver Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let driver of drivers" class="table-row" (dblclick)="setActive('edit driver', driver)">
+                <td class="table-data">{{ driver.id }}</td>
+                <td class="table-data">{{ driver.firstName + " " + driver.lastName }}</td>
+                <td class="table-data">{{ driver.email }}</td>
+                <td class="table-data">{{ driver.phone }}</td>
+                <td class="table-data">{{ driver.username }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

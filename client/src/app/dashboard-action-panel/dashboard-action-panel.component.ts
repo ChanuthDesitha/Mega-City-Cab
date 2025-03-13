@@ -10,6 +10,16 @@ import { EditCustomerComponent } from '../edit-customer/edit-customer.component'
 import { ReScheduleTabComponent } from '../re-schedule-tab/re-schedule-tab.component';
 import { ReservationHistoryTabComponent } from '../reservation-history-tab/reservation-history-tab.component';
 import { HelpComponent } from '../help/help.component';
+import { ManageDriversComponent } from '../manage-drivers/manage-drivers.component';
+import { ManageUsersComponent } from '../manage-users/manage-users.component';
+import { ManageVehiclesComponent } from '../manage-vehicles/manage-vehicles.component';
+import { SystemSettingsComponent } from '../system-settings/system-settings.component';
+import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
+import { AddDriverComponent } from '../add-driver/add-driver.component';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
+import { EditDriverComponent } from '../edit-driver/edit-driver.component';
+import { EditVehicleComponent } from '../edit-vehicle/edit-vehicle.component';
 
 @Component({
   selector: 'app-dashboard-action-panel',
@@ -25,16 +35,27 @@ import { HelpComponent } from '../help/help.component';
     ReScheduleTabComponent,
     ReservationHistoryTabComponent,
     ProfileTabComponent,
-    HelpComponent
+    HelpComponent,
+    ManageDriversComponent,
+    ManageUsersComponent,
+    ManageVehiclesComponent,
+    SystemSettingsComponent,
+    AddVehicleComponent,
+    AddDriverComponent,
+    AddUserComponent,
+    EditUserComponent,
+    EditDriverComponent,
+    EditVehicleComponent
   ],
   templateUrl: './dashboard-action-panel.component.html',
   styleUrl: './dashboard-action-panel.component.scss',
 })
 export class DashboardActionPanelComponent {
   @Input() activeTab: string = '';
-  @Output() tabChange = new EventEmitter<string>();
+  @Input() selectedUser: any = null;
+  @Output() tabChange = new EventEmitter<{ tab: string; user?: any }>();
 
-  setActive(tab: string) {
-    this.tabChange.emit(tab);
+  setActive(tab: string, user?: any) {
+    this.tabChange.emit({tab, user});
   }
 }

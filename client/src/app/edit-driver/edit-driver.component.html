@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="heading">
+    <p>Manage Drivers > Update Driver</p>
+  </div>
+
+  <div class="user-data-container">
+    <form [formGroup]="updateDriverForm" (ngSubmit)="onSubmit()">
+      <div class="form-container">
+        <div class="left-container">
+          <div class="user-input">
+            <label for="first name">First Name</label>
+            <input type="text" formControlName="firstName" />
+          </div>
+
+          <div class="user-input">
+            <label for="phone">Phone</label>
+            <input type="text" formControlName="phone" />
+          </div>
+
+          <div class="user-input">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" />
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="user-input">
+            <label for="Last Name">Last Name</label>
+            <input type="text" formControlName="lastName" />
+          </div>
+
+          <div class="user-input">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" />
+          </div>
+
+          <div class="user-input">
+            <label for="driver id">Driver ID</label>
+            <input type="text" formControlName="id" readonly />
+          </div>
+        </div>
+      </div>
+      <div class="save-btn">
+        <button type="submit">Update Driver</button>
+      </div>
+    </form>
+  </div>
+
+  <app-notification
+    *ngIf="message"
+    [message]="message"
+    [messageType]="messageType"
+    (close)="closeNotification()"
+  ></app-notification>
+</div>

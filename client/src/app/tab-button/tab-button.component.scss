@@ -1,13 +1,12 @@
 .btn {
   display: flex;
-  // justify-content: space-between;
   margin: 15px;
   align-items: center;
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
   font-size: 17px;
   border-radius: 1.2rem;
-  width: 250px;
+  width: 220px;
   cursor: pointer;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

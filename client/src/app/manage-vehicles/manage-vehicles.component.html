@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="heading">
+      <p>Manage Vehicles</p>
+    </div>
+  
+    <div class="btn-container">
+      <button class="add-customer-btn" (click)="setActive('add vehicle')">
+        <div class="btn">
+          <div class="title">
+            <p>Add New Vehicle</p>
+          </div>
+  
+          <div class="icon">
+            <img src="/next.png" alt="next icon" />
+          </div>
+        </div>
+      </button>
+
+      <div class="data-container">
+        <div class="customer-phone">
+          <div class="flex-1"></div>
+          <div class="label">Search</div>
+    
+          <div class="load-customer">
+            <input
+              type="text"
+              placeholder="CBB XXXX"
+              #customerPhone            
+            />
+          </div>
+    
+          <div class="customer-error">
+          </div>
+        </div>
+    
+        <div class="table-container">
+          <table class="reservation-table">
+            <thead class="table-heading">
+              <tr class="table-row">
+                <th>Registraion Number</th>
+                <th>Driver Name</th>
+                <th>Vehicle Type</th>
+                <th>Brand</th>
+                <th>Model</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let vehicle of vehicles" class="table-row" (dblclick)="setVehicle(vehicle)">
+                <td class="table-data">{{ vehicle.registrationNumber }}</td>
+                <td class="table-data">{{ vehicle.username }}</td>
+                <td class="table-data">{{ vehicle.type }}</td>
+                <td class="table-data">{{ vehicle.brand }}</td>
+                <td class="table-data">{{ vehicle.model }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

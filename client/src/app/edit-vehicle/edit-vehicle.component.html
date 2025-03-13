@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="heading">
+      <p>Manage Vehicles > Update Vehicle</p>
+    </div>
+  
+    <div class="user-data-container">
+      <form [formGroup]="updateVehicleForm" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+          <div class="left-container">
+            <div class="user-input">
+              <label for="registraion number">Registration Number</label>
+              <input type="text" formControlName="registrationNumber" />
+            </div>
+  
+            <div class="user-input">
+              <label for="vehicle type">Vehicle Type</label>
+              <select formControlName="type">
+                <option value="" disabled selected>Select a Type</option>
+                <option value="tuk">Tuk</option>
+                <option value="car">Car</option>
+                <option value="van">Van</option>
+              </select>
+            </div>
+  
+            <div class="user-input">
+              <label for="brand">Brand</label>
+              <input type="text" formControlName="brand" />
+            </div>
+  
+            <div class="user-input">
+              <label for="model">Model</label>
+              <input type="text" formControlName="model" />
+            </div>
+  
+            <div class="user-input">
+              <label for="year">Year</label>
+              <input type="text" formControlName="year" />
+            </div>
+          </div>
+  
+          <div class="right-container">
+            <div class="user-input">
+              <label for="passenger count">Passenger Count</label>
+              <input type="text" formControlName="passengerCount" />
+            </div>
+  
+            <div class="user-input">
+              <label for="insurence exp date">Insurence Exp. Date</label>
+              <input type="date" formControlName="insurenceExpDate" />
+            </div>
+  
+            <div class="user-input">
+              <label for="license exp date">License Exp. Date</label>
+              <input type="date" formControlName="licenseExpDate" />
+            </div>
+  
+            <div class="user-input">
+              <label for="driver">Driver</label>
+              <select formControlName="username">
+                <option value="" disabled selected>Select a Driver</option>
+                <option value="tuk">Tuk</option>
+                <option value="car">Car</option>
+                <option value="van">Van</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="save-btn">
+          <button type="submit">Update Vehicle</button>
+        </div>
+      </form>
+    </div>
+  
+    <app-notification
+      *ngIf="message"
+      [message]="message"
+      [messageType]="messageType"
+      (close)="closeNotification()"
+    ></app-notification>
+  </div>
+  

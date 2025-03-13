@@ -11,8 +11,12 @@ import { DashboardSidePanelComponent } from '../dashboard-side-panel/dashboard-s
 })
 export class DashboardComponent {
   activeTab: string = '';
+  selectedUser: any = null;
 
-  setActive(tab: string) {
+  setActive(tab: string, user?: any) {
     this.activeTab = tab;
+    if (user) {
+      this.selectedUser = user;
+    }
   }
 }

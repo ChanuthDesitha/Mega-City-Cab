@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="heading">
+    <p>Manage Employee</p>
+  </div>
+
+  <div class="btn-container">
+    <button class="add-customer-btn" (click)="setActive('add user')">
+      <div class="btn">
+        <div class="title">
+          <p>Add New Employee</p>
+        </div>
+
+        <div class="icon">
+          <img src="/next.png" alt="next icon" />
+        </div>
+      </div>
+    </button>
+
+    <div class="data-container">
+      <div class="customer-phone">
+        <div class="flex-1"></div>
+        <div class="label">Search</div>
+
+        <div class="load-customer">
+          <input type="text" placeholder="username" #customerPhone />
+        </div>
+
+        <div class="customer-error">
+          <!-- <p *ngIf="customerID === ''">{{ customerErrorMessage }}</p> -->
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="reservation-table">
+          <thead class="table-heading">
+            <tr class="table-row">
+              <th>User ID</th>
+              <th>Driver Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <tr
+              *ngFor="let user of users"
+              class="table-row"
+              (dblclick)="setActive('edit user', user)"
+            >
+              <td class="table-data">{{ user.id }}</td>
+              <td class="table-data">
+                {{ user.firstName + " " + user.lastName }}
+              </td>
+              <td class="table-data">{{ user.email }}</td>
+              <td class="table-data">{{ user.phone }}</td>
+              <td class="table-data">{{ user.username }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
