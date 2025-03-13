@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-reservation-tab',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './new-reservation-tab.component.html',
   styleUrl: './new-reservation-tab.component.scss',
 })
@@ -17,6 +17,11 @@ export class NewReservationTabComponent {
   customerPhone: string = '';
   customerErrorMessage: string = 'Please enter a registered customer phone number!';
   vehicleErrorMessage: string = 'Please select a vehicle type!';
+  locationErrorMessage: string = 'Please select pickup and dropoff locations!';
+  selectedPickupLocation: string = '';
+  selectedDropoffLocation: string = '';
+  locations: string[] = [];
+  distance: number = 0;
 
   customerID: string = '';
   fisrtName: string = '';
@@ -37,17 +42,47 @@ export class NewReservationTabComponent {
   driverEmail: string = '';
   driverPhone: string = '';
 
-  private http = inject(HttpClient);
-
   currentDate: string = new Date().toISOString().split('T')[0];
   currentTime: string = new Date().toTimeString().split(' ')[0].slice(0, 5);
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getLocations();
+  }
 
   onCusPhoneChange(customerPhone: string) {
     this.customerPhone = customerPhone;
 
     if (customerPhone.length === 10) {
       this.getCustomer();
+    } else {
+      this.customerID = '';
+      this.fisrtName = '';
+      this.lastName = '';
+      this.email = '';
+      this.phone = '';
+      this.address = '';
+      this.nic = '';
     }
+  }
+
+  getLocations() {
+    const url =
+      'http://localhost:8080/server_war_exploded/api/locations/get-locations';
+
+    this.http.post<{ pickupLocations: string[]; status: string }>(url, {}).subscribe({
+      next: (response) => {
+        if (response.status === 'success' && response.pickupLocations) {
+          this.locations = response.pickupLocations;
+        } else {
+          console.error('Unexpected response format:', response);
+        }
+      },
+      error: (error) => {
+        console.error('Failed to fetch locations:', error);
+      },
+    });
   }
 
   getCustomer() {
@@ -127,13 +162,59 @@ export class NewReservationTabComponent {
     });
   }
 
-  setIsPopupVisible() {
-    this.isPopupVisible = !this.isPopupVisible;
+  onPickupChange(event: Event) {
+    this.selectedPickupLocation = (event.target as HTMLSelectElement).value;
+    this.getDistance();
   }
 
-  setSchedule(event: Event) {
+  onDropOffChange(event: Event) {
+    this.selectedDropoffLocation = (event.target as HTMLSelectElement).value;
+    this.getDistance();
+  }
+
+  getDistance() {
+    if (this.selectedPickupLocation && this.selectedDropoffLocation) {
+      const url = `http://localhost:8080/server_war_exploded/api/locations/get-distance`;
+      const requestBody = {
+        pick: this.selectedPickupLocation,
+        drop: this.selectedDropoffLocation,
+      };
+  
+      this.http.post<{ distance: number; status: string }>(url, requestBody).subscribe({
+        next: (response) => {
+          if (response.status === 'success') {
+            this.distance = response.distance;
+          }
+          console.log('Distance:', this.distance);
+        },
+        error: (error) => {
+          console.error('Error fetching distance:', error);
+        },
+      });
+    } else {
+      this.locationErrorMessage = `Please select ${this.selectedPickupLocation ? 'dropoff' : 'pickup'} location!`;
+      console.error(this.locationErrorMessage);
+    }
+  }
+
+  setPopupVisible() {
+    if(this.customerID !== '' && this.registrationNumber !== '' && this.distance !== 0) {
+      this.isPopupVisible = true;
+    }
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
+  }
+
+  setScheduleFalse(event: Event) {
     event.preventDefault();
-    this.schedule = !this.schedule;
+    this.schedule = false;
+  }
+
+  setScheduleTrue(event: Event) {
+    event.preventDefault();
+    this.schedule = true;
   }
 
   setVehicleType(vehicleType: string, event: Event) {

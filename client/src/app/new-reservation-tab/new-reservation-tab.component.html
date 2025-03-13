@@ -15,61 +15,47 @@
           />
         </div>
 
-        <div *ngIf="customerID !== ''">
-          <div class="name">
-            <div class="first-name">
-              <div class="label">First Name</div>
-              <div class="details">{{ fisrtName }}</div>
-            </div>
-
-            <div class="last-name">
-              <div class="label">Last Name</div>
-              <div class="details">{{ lastName }}</div>
-            </div>
-          </div>
-
-          <div class="address">
-            <div class="label">Address</div>
-            <div class="details">{{ address }}</div>
-          </div>
-
-          <div class="email-nic">
-            <div class="email">
-              <div class="label">Email</div>
-              <div class="details">{{ email }}</div>
-            </div>
-
-            <div class="nic">
-              <div class="label">NIC</div>
-              <div class="details">{{ nic }}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="customer-error">
-          <p *ngIf="customerID === ''">{{ customerErrorMessage }}</p>
-        </div>
-
         <div class="locations">
           <div class="pick">
             <div class="label">Pick up Location</div>
-            <input type="text" />
+            <select (change)="onPickupChange($event)">
+              <option value="" disabled selected>Select a Location</option>
+              <option *ngFor="let location of locations" [value]="location">
+                {{ location }}
+              </option>
+            </select>
           </div>
 
           <div class="drop">
             <div class="label">Drop off Location</div>
-            <input type="text" />
+            <select (change)="onDropOffChange($event)">
+              <option value="" disabled selected>Select a Location</option>
+              <option *ngFor="let location of locations" [value]="location">
+                {{ location }}
+              </option>
+            </select>
           </div>
         </div>
 
-        <div class="schedule-btn">
-          <button
-            type="button"
-            (click)="setSchedule($event)"
-            [ngClass]="{ 'bg-[#FFB800]': schedule, 'bg-white': !schedule }"
-          >
-            Schedule for Later
-          </button>
+        <div class="schedule">
+          <div class="book-now-btn">
+            <button
+              type="button"
+              (click)="setScheduleFalse($event)"
+              [ngClass]="{ 'bg-[#FFB8008c]': !schedule, 'bg-white': schedule }"
+            >
+              Book Now
+            </button>
+          </div>
+          <div class="schedule-btn">
+            <button
+              type="button"
+              (click)="setScheduleTrue($event)"
+              [ngClass]="{ 'bg-[#FFB8008c]': schedule, 'bg-white': !schedule }"
+            >
+              Schedule for Later
+            </button>
+          </div>
         </div>
 
         <div class="schedule-details">
@@ -83,10 +69,8 @@
             <input type="time" [readOnly]="!schedule" [value]="currentTime" />
           </div>
         </div>
-      </div>
 
-      <div class="vehicle-form">
-        <div class="label">Vehicle Type</div>
+        <div class="label">Select a Vehicle Type</div>
         <div class="vehicle-type">
           <button
             class="vehicle-btn"
@@ -141,55 +125,158 @@
             </div>
           </button>
         </div>
+      </div>
 
-        <div class="label">Driver & Vehicle Details</div>
+      <div class="vehicle-form">
+        <div class="label">Customer Details</div>
+        <div *ngIf="customerID !== ''">
+          <div class="first-name">
+            <div class="icon">
+              <img src="/people.png" alt="people icon" />
+            </div>
+            <div class="details">{{ fisrtName + " " + lastName }}</div>
+          </div>
 
-        <div *ngIf="registrationNumber !== '' && driverEmail !== ''">
-          <div class="driver-details">
-            <div class="driver-name">
-              <div class="label">Driver Name</div>
-              <div class="details">
-                {{ driverFirstName + " " + driverLastName }}
+          <div class="address">
+            <div class="icon">
+              <img src="/pin.png" alt="people icon" />
+            </div>
+            <div class="details">{{ address }}</div>
+          </div>
+
+          <div class="email">
+            <div class="icon">
+              <img src="/email.png" alt="people icon" />
+            </div>
+            <div class="details">{{ email }}</div>
+          </div>
+
+          <div class="nic">
+            <div class="icon">
+              <img src="/identity-card.png" alt="people icon" />
+            </div>
+            <div class="details">{{ nic }}</div>
+          </div>
+        </div>
+
+        <div class="customer-error">
+          <p *ngIf="customerID === ''">{{ customerErrorMessage }}</p>
+        </div>
+
+        <div class="label">Trip Details</div>
+
+        <div *ngIf="distance !== 0">
+          <div class="pickup">
+            <div class="icon">
+              <img src="/pin.png" alt="pickup icon" />
+            </div>
+            <div class="details w-[150px]">Origin</div>
+            <div class="details">: {{ selectedPickupLocation }}</div>
+          </div>
+
+          <div class="dropoff">
+            <div class="icon">
+              <img src="/flag.png" alt="drop icon" />
+            </div>
+            <div class="details w-[150px]">Destination</div>
+            <div class="details">: {{ selectedDropoffLocation }}</div>
+          </div>
+
+          <div class="distance">
+            <div class="icon">
+              <img src="/distance.png" alt="distance icon" />
+            </div>
+            <div class="details w-[150px]">Distance</div>
+            <div class="details">: {{ distance }} km</div>
+          </div>
+        </div>
+
+        <div class="customer-error">
+          <p
+            *ngIf="
+              selectedPickupLocation === '' || selectedDropoffLocation === ''
+            "
+          >
+            {{ locationErrorMessage }}
+          </p>
+        </div>
+
+        <div class="label">Trip Fare</div>
+
+        <div class="fare-container" *ngIf="registrationNumber !== ''">
+          <div class="lables">
+            <div class="fare">
+              <div class="icon">
+                <img src="/payment.png" alt="payment icon" />
+              </div>
+              <div class="details w-[150px]">Original Fare</div>
+            </div>
+
+            <div class="fare">
+              <div class="icon">
+                <img src="/discount.png" alt="payment icon" />
+              </div>
+              <div class="details w-[150px]">Discount</div>
+            </div>
+
+            <div class="fare">
+              <div class="icon">
+                <img src="/money.png" alt="payment icon" />
+              </div>
+              <div class="details w-[150px]">Final Fare</div>
+            </div>
+          </div>
+
+          <div class="prices">
+            <div class="original-price">
+              <div class="price-details">
+                <span class="font-normal text-xl">Rs.</span> 722.22
               </div>
             </div>
 
-            <div class="driver-phone">
-              <div class="label">Mobile Number</div>
-              <div class="details">{{ driverPhone }}</div>
+            <div class="discount">
+              <div class="discount-details">(10%) Rs. 72.22</div>
             </div>
-          </div>
 
-          <div class="vehicle-details">
-            <div class="regNumber">
-              <div class="label">Vehicle Number</div>
-              <div class="details">{{ registrationNumber }}</div>
-            </div>
-            <div class="brand">
-              <div class="label">Vehicle Brand</div>
-              <div class="details">{{ brand }}</div>
-            </div>
-          </div>
-
-          <div class="vehicle-license">
-            <div class="license-exp-date">
-              <div class="label">License Expiry Date</div>
-              <div class="details">{{ licenseExpDate }}</div>
-            </div>
-            <div class="insurance-exp-date">
-              <div class="label">Insurance Expiry Date</div>
-              <div class="details">{{ insuranceExpDate }}</div>
+            <div class="fare">
+              <div class="price-details">
+                <span class="font-normal text-xl">Rs.</span> 650.00
+              </div>
             </div>
           </div>
         </div>
 
         <div class="customer-error">
-          <p *ngIf="registrationNumber === '' && driverEmail === ''">
+          <p *ngIf="registrationNumber === ''">
             {{ vehicleErrorMessage }}
           </p>
         </div>
 
         <div class="proceed-btn">
-          <button type="button" (click)="setIsPopupVisible()">Proceed</button>
+          <button
+            type="button"
+            (click)="setPopupVisible()"
+            [disabled]="
+              !(
+                this.customerID !== '' &&
+                this.registrationNumber !== '' &&
+                this.distance !== 0
+              )
+            "
+            [ngClass]="{
+              'bg-[#FFB800] hover:bg-amber-500 cursor-pointer':
+                this.customerID !== '' &&
+                this.registrationNumber !== '' &&
+                this.distance !== 0,
+              'bg-white cursor-not-allowed': !(
+                this.customerID !== '' &&
+                this.registrationNumber !== '' &&
+                this.distance !== 0
+              )
+            }"
+          >
+            Proceed
+          </button>
         </div>
       </div>
     </div>
@@ -197,9 +284,63 @@
 
   <div *ngIf="isPopupVisible" class="popup-overlay">
     <div class="popup-container">
-      <h2>Popup Title</h2>
-      <p>This is a popup window.</p>
-      <!-- <button (click)="closePopup()">Close</button> -->
+      <div class="label">Select a Driver & Vehicle</div>
+
+      <div class="detail-container">
+        <div class="vehicle">
+          <div class="registration-number">
+            <div class="popup-details w-[200px]">Registration Number</div>
+            <div class="popup-details">: {{ registrationNumber }}</div>
+          </div>
+
+          <div class="popup-vehicle-type">
+            <div class="popup-details w-[200px]">Vehicle Type</div>
+            <div class="popup-details">: {{ vehicleType }}</div>
+          </div>
+        </div>
+
+        <div class="driver">
+          <div class="driver-img">
+            <img src="/user.png" alt="driver icon" />
+          </div>
+          <div>
+            <div class="driver-name">
+              <div class="popup-details font-semibold">
+                {{ driverFirstName + " " + driverLastName }}
+              </div>
+            </div>
+
+            <div class="driver-mobile">
+              <div class="popup-details">{{ driverPhone }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="driver-reload-btn">
+          <button (click)="getVehicle()">
+            <img src="/reload.png" alt="reload icon" />
+            <span>Change Driver & Vehicle</span>
+          </button>
+        </div>
+
+        <div class="cancel-confirm-btn">
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="closePopup()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            class="confirm-btn"
+            (click)="setScheduleTrue($event)"
+          >
+            Confirm Reservation
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
