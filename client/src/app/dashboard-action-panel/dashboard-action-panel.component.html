@@ -26,19 +26,11 @@
     *ngSwitchCase="'re-schedule reservation'"
   ></app-re-schedule-tab>
 
-  <app-reservation-history-tab
-    *ngSwitchCase="'reservation history'"
-  ></app-reservation-history-tab>
-
   <app-profile-tab *ngSwitchCase="'profile'"></app-profile-tab>
-
-    <app-re-schedule-tab *ngSwitchCase="'re-schedule reservation'"></app-re-schedule-tab>
 
     <app-reservation-history-tab *ngSwitchCase="'reservation history'"></app-reservation-history-tab>
 
     <app-help *ngSwitchCase="'help'"></app-help>
-
-    <app-profile-tab *ngSwitchCase="'profile'"></app-profile-tab>
 
     <app-manage-vehicles
       *ngSwitchCase="'manage vehicles'"
@@ -53,7 +45,7 @@
     ></app-manage-drivers>
 
     <app-manage-users
-      *ngSwitchCase="'manage Employee'"
+      *ngSwitchCase="'manage users'"
       [activeTab]="activeTab"
       (tabChange)="setActive($event.tab, $event.user)"
     ></app-manage-users>
@@ -66,7 +58,7 @@
 
     <app-add-driver *ngSwitchCase="'add driver'"></app-add-driver>
 
-    <app-add-user *ngSwitchCase="'add Employee'"></app-add-user>
+    <app-add-user *ngSwitchCase="'add user'"></app-add-user>
 
     <app-edit-user *ngSwitchCase="'edit user'" [user]="selectedUser"></app-edit-user>
 

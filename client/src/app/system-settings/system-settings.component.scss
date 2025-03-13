@@ -1,65 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
 .container {
-  @apply mt-[40px] flex flex-col;
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  margin: 0 auto; /* Ensure center alignment */
 }
 
 .heading {
-  @apply text-4xl font-nunito font-bold ml-[90px];
+  background: #9b59b6;
+  padding: 22px 25px;
+  text-align: center; /* Center the text */
+}
+
+.heading p {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .btn-container {
-  @apply flex flex-col mt-10 justify-center items-center space-y-5;
+  padding: 25px;
 }
 
 .add-customer-btn {
-  @apply w-[1200px] bg-[#e6e6e6db] hover:bg-[#dcdcdcdb] shadow-lg transition duration-300 text-black font-semibold px-6 py-6 rounded-[15px];
+  width: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 0;
+  margin-bottom: 25px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.add-customer-btn:hover {
+  background-color: #e9ecef;
+  transform: translateY(-3px);
 }
 
 .btn {
-  @apply flex justify-between items-center w-full;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
 }
 
-.title {
-  @apply text-xl font-nunito flex-1 text-left;
+.title p {
+  font-size: 17px;
+  font-weight: 600;
+  color: #343a40;
 }
 
 .icon {
-  @apply w-[20px] h-auto;
+  background-color: #4CAF50;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.customer-phone {
-  @apply flex w-[1200px] mb-8 space-x-5 items-center;
+.icon img {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
 }
 
-.label {
-  @apply text-xl font-nunito;
-}
-
-.load-customer {
-  input {
-    @apply w-[300px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
-  }
-}
-
-.customer-error {
-  @apply text-xl text-red-500 font-nunito justify-center items-center;
-}
-
-.data-container {
-  @apply flex flex-col mt-10 justify-center items-center;
+form {
+  width: 100%;
 }
 
 .input-row {
-  @apply flex justify-between items-center w-[750px] py-2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
 
-  input {
-    @apply w-[250px] px-4 py-3 border border-gray-300 rounded-[9px] focus:outline-none focus:ring-1 focus:ring-[#FFB800] font-nunito;
-  }
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 5px;
+  border-left: 4px solid;
+  line-height: 1.2;
+}
+
+/* Different colors for each vehicle type with left borders */
+.input-row:nth-child(1) .label {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.input-row:nth-child(3) .label {
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.input-row:nth-child(5) .label {
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+input[type="text"] {
+  width: 65%;
+  padding: 12px 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  background-color: #f8f9fa;
+}
+
+input[type="text"]::placeholder {
+  color: #adb5bd;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #2ecc71;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #dee2e6;
+  margin: 5px 0;
 }
 
 .save-btn {
-  @apply flex justify-center mt-5;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
 
-  button {
-    @apply w-[250px] bg-[#FFB800] text-black py-3 rounded-[9px] hover:bg-amber-500 transition duration-300 font-nunito font-bold;
-  }
+.save-btn button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 160px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.save-btn button:hover {
+  background: #4CAF50;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.save-btn button:active {
+  transform: translateY(0);
 }
